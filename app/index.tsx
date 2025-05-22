@@ -43,7 +43,7 @@ export default function HomeScreen() {
                 keyExtractor={(item) => item.id}
                 ListFooterComponent={
                     <TouchableOpacity style={styles.addButton} onPress={() => setModalVisible(true)}>
-                        <Text style={styles.addButtonText}>Add Category</Text>
+                        <Text style={styles.addButtonText}>Add Group</Text>
                     </TouchableOpacity>
                 }
             />

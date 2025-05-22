@@ -6,7 +6,7 @@ import MsgItem from '@/components/MsgItem';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useStore } from '@/utils/store';
 import { Swipeable } from 'react-native-gesture-handler'; // Import Swipeable
-
+import { SafeAreaView } from 'react-native-safe-area-context';
 export default function MsgsListScreen() {
     const router = useRouter();
     const { groupId, name } = useLocalSearchParams<{ groupId: string; name: string }>();
@@ -33,6 +33,7 @@ export default function MsgsListScreen() {
     );
 
     return (
+        <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.container}>
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => router.back()}>
@@ -54,6 +55,7 @@ export default function MsgsListScreen() {
                 <MaterialIcons name="add" size={24} color="white" />
             </TouchableOpacity>
         </View>
+        </SafeAreaView>
     );
 }
 

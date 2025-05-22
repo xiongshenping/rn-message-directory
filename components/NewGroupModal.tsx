@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { useStore } from '@/utils/store'; // Import the store
-import { v4 as uuidv4 } from 'uuid';
+import uuid from 'react-native-uuid';
 
 interface Props {
     visible: boolean;
@@ -15,7 +15,7 @@ const NewGroupModal = ({ visible, onClose, onSave }: Props) => {
 
     const handleSave = async () => {
         if (name.trim()) {
-            await saveGroup({ id: uuidv4(), name });
+            await saveGroup({ id: uuid.v4(), name });
             setName('');
             onSave();
             onClose();

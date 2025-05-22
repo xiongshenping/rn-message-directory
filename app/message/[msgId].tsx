@@ -4,8 +4,8 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Msg } from '@/types';
 import { useStore } from '@/utils/store'; // Import the store
 import { MaterialIcons } from '@expo/vector-icons';
-import { v4 as uuidv4 } from 'uuid';
-
+import uuid from 'react-native-uuid'
+import { SafeAreaView } from 'react-native-safe-area-context';
 export default function MsgDetailScreen() {
     const router = useRouter();
     const { msgId, groupId } = useLocalSearchParams<{ msgId: string; groupId?: string }>();
@@ -21,7 +21,7 @@ export default function MsgDetailScreen() {
             loadMsg();
         } else {
             setMsg({
-                id: uuidv4(),
+                id: uuid.v4(),
                 groupId: groupId!,
                 title: '',
                 content: '',
@@ -52,6 +52,7 @@ export default function MsgDetailScreen() {
     if (!msg) return null;
 
     return (
+        <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.container}>
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => router.back()}>
@@ -108,6 +109,7 @@ export default function MsgDetailScreen() {
                 </>
             )}
         </View>
+        </SafeAreaView>
     );
 }
 
